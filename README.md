@@ -19,3 +19,16 @@ This is an example to build the project
 
 
 Use SetProject Func to Build Your Project
+
+
+``` go
+package main
+
+import (
+	"github.com/savitar0916/buildproject/example"
+)
+
+func main() {
+	example.SetProject()
+}
+```
