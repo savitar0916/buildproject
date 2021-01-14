@@ -7,25 +7,25 @@ import (
 	"path"
 )
 
-//Data -
-type Data struct {
+var (
 	//FName - 專案名稱
-	FName string ""
+	FName string
 	//App -
-	App string "app"
+	App string = "app"
 	//Domain -
-	Domain string "domain"
+	Domain string = "domain"
 	//Infra -
-	Infra string "infra"
+	Infra string = "infra"
 	//Interface -
-	Interface string "interface"
+	Interface string = "interface"
 	//Usecase -
-	Usecase string "usecase"
-}
+	Usecase string = "usecase"
+)
 
-func (d *Data) setProject() {
-	d.FName = getFName()
-	setapp(d)
+//SetProject -
+func SetProject() {
+	FName = getFName()
+	setapp()
 	//setconfig()
 }
 
@@ -39,21 +39,21 @@ func getFName() string {
 	return filename
 }
 
-func setapp(d *Data) {
+func setapp() {
 	os.Mkdir("app", os.ModePerm)
-	setdomain(d)
-	setinfra(d)
-	setinterface(d)
-	setusecase(d)
+	setdomain()
+	setinfra()
+	setinterface()
+	setusecase()
 }
 
 func setconfig() {
 	os.Mkdir("config", os.ModePerm)
 }
 
-func setdomain(d *Data) {
+func setdomain() {
 	//建立資料夾
-	Path := fmt.Sprintf("%s/%s", d.App, d.Domain)
+	Path := fmt.Sprintf("%s/%s", App, Domain)
 	os.MkdirAll(Path, os.ModePerm)
 	Model := fmt.Sprintf("%s/%s", Path, "model")
 	os.MkdirAll(Model, os.ModePerm)
@@ -63,9 +63,9 @@ func setdomain(d *Data) {
 	os.MkdirAll(Service, os.ModePerm)
 }
 
-func setinfra(d *Data) {
+func setinfra() {
 	//建立資料夾
-	Path := fmt.Sprintf("%s/%s", d.App, d.Infra)
+	Path := fmt.Sprintf("%s/%s", App, Infra)
 	os.MkdirAll(Path, os.ModePerm)
 	Config := fmt.Sprintf("%s/%s", Path, "config")
 	os.MkdirAll(Config, os.ModePerm)
@@ -73,9 +73,9 @@ func setinfra(d *Data) {
 	os.MkdirAll(Logger, os.ModePerm)
 }
 
-func setinterface(d *Data) {
+func setinterface() {
 	//建立資料夾
-	Path := fmt.Sprintf("%s/%s", d.App, d.Interface)
+	Path := fmt.Sprintf("%s/%s", App, Interface)
 	os.MkdirAll(Path, os.ModePerm)
 	API := fmt.Sprintf("%s/%s", Path, "api")
 	os.MkdirAll(API, os.ModePerm)
@@ -83,14 +83,14 @@ func setinterface(d *Data) {
 	os.MkdirAll(Controller, os.ModePerm)
 }
 
-func setusecase(d *Data) {
-	Path := fmt.Sprintf("%s/%s", d.App, d.Usecase)
+func setusecase() {
+	Path := fmt.Sprintf("%s/%s", App, Usecase)
 	os.MkdirAll(Path, os.ModePerm)
-	content := []byte("package " + d.Usecase)
+	content := []byte("package " + Usecase)
 	Interface := fmt.Sprintf("%s/%s", Path, "interface.go")
-	Usecase := fmt.Sprintf("%s/%s%s", Path, d.FName, "_usecase.go")
-	UsecaseTest := fmt.Sprintf("%s/%s%s", Path, d.FName, "_test.go")
-	fmt.Println(d.FName)
+	Usecase := fmt.Sprintf("%s/%s%s", Path, FName, "_usecase.go")
+	UsecaseTest := fmt.Sprintf("%s/%s%s", Path, FName, "_test.go")
+	fmt.Println(FName)
 	//將指定內容寫入到檔案中
 	err := ioutil.WriteFile(Interface, content, os.ModePerm)
 	if err != nil {
