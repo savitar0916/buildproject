@@ -58,7 +58,7 @@ func setconfig() {
 	if err != nil {
 		fmt.Println("ioutil WriteFile error: ", err)
 	}
-	Data := fmt.Sprintf(`%s%s`, `package config\nimport (\n"time"\n)\nvar (\n// ConsulHost -\nConsulHost string\n// APP -\nAPP = ""\n// VERSION -\nVERSION string\n// BUILD -\nBUILD string\n// COMMIT -\nCOMMIT string\n// PORT - server port\nPORT string\n`, `// ZONE - time zone\nZONE = time.FixedZone("", 8*60*60)\n// ISUSEIP - IP\nISUSEIP bool\n)\nvar (\n// C - \nC = &Config{}\n)\n// Config - 配置\ntype Config struct {\n	}\n//api -\nconst (\n)\n`)
+	Data := fmt.Sprintf(`%s%s`, "package config\nimport (\n\"time\"\n)\nvar (\n// ConsulHost -\nConsulHost string\n// APP -\nAPP = \"\"\n// VERSION -\nVERSION string\n// BUILD -\nBUILD string\n// COMMIT -\nCOMMIT string\n// PORT - server port\nPORT string\n", "// ZONE - time zone\nZONE = time.FixedZone(\"\", 8*60*60)\n// ISUSEIP - IP\nISUSEIP bool\n)\nvar (\n// C - \nC = &Config{}\n)\n// Config - 配置\ntype Config struct {\n}\n//api -\nconst (\n)\n")
 	envContent := []byte(Data)
 
 	env := fmt.Sprintf("%s/%s", Config, "env.go")
