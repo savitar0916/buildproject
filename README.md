@@ -19,10 +19,10 @@ Use SetProject Func to Build Your Project
 package main
 
 import (
-	"github.com/savitar0916/buildproject/example"
+	"github.com/savitar0916/buildproject/project"
 )
 
-func main() {
-	example.SetProject()
+func main(){
+	project.SetProject()
 }
 ```
