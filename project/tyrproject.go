@@ -74,21 +74,21 @@ func setdomain() {
 	os.MkdirAll(Path, os.ModePerm)
 	Model := fmt.Sprintf("%s/%s", Path, "model")
 	os.MkdirAll(Model, os.ModePerm)
-
 	Repository := fmt.Sprintf("%s/%s", Path, "repository")
 	os.MkdirAll(Repository, os.ModePerm)
-	Data := []byte("package repository")
-	Repo := fmt.Sprintf("%s/%s%s", Path, FName, "_repository.go")
-	err := ioutil.WriteFile(Repo, Data, os.ModePerm)
+	Service := fmt.Sprintf("%s/%s", Path, "service")
+	os.MkdirAll(Service, os.ModePerm)
+
+	RepoData := []byte("package repository")
+	Repo := fmt.Sprintf("%s/%s%s", Repository, FName, "_repository.go")
+	err := ioutil.WriteFile(Repo, RepoData, os.ModePerm)
 	if err != nil {
 		fmt.Println("ioutil WriteFile error: ", err)
 	}
 
-	Service := fmt.Sprintf("%s/%s", Path, "service")
-	os.MkdirAll(Service, os.ModePerm)
-	content := []byte("package service")
-	Interface := fmt.Sprintf("%s/%s", Path, "interface.go")
-	err = ioutil.WriteFile(Interface, content, os.ModePerm)
+	SerData := []byte("package service")
+	SerInter := fmt.Sprintf("%s/%s", Service,"interface.go")
+	err = ioutil.WriteFile(SerInter, SerData, os.ModePerm)
 	if err != nil {
 		fmt.Println("ioutil WriteFile error: ", err)
 	}
